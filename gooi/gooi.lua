@@ -173,8 +173,8 @@ function gooi.newButton(text, x, y, w, h)
 	local b = {}
 
 	local defText = ""
-	local defW = gooi.getFont():getWidth(defText) + gooi.getFont():getHeight()
-	local defH = gooi.getFont():getHeight() * 2
+	local defW = gooi.getFont(self):getWidth(defText) + gooi.getFont(self):getHeight()
+	local defH = gooi.getFont(self):getHeight() * 2
 	local params = {
 		text = defText,
 		x = 10,
@@ -187,7 +187,7 @@ function gooi.newButton(text, x, y, w, h)
 	elseif type(text) == "string" then
 		params.text = text
 		params.x, params.y = x or 10, y or 10
-		params.w = w or gooi.getFont():getWidth(text) + gooi.getFont():getHeight()
+		params.w = w or gooi.getFont(self):getWidth(text) + gooi.getFont(self):getHeight()
 		params.h = h or defH
 	end
 
@@ -228,15 +228,15 @@ function gooi.newButton(text, x, y, w, h)
 		end
 		-- Center text:
 		local t = self.text
-		local x = (self.x + self.w / 2) - (gooi.getFont():getWidth(t) / 2)
-		local y = (self.y + self.h / 2) - (gooi.getFont():getHeight() / 2)
+		local x = (self.x + self.w / 2) - (gooi.getFont(self):getWidth(t) / 2)
+		local y = (self.y + self.h / 2) - (gooi.getFont(self):getHeight() / 2)
 		if self.align == "left" then
 			x = self.x + self.h / 2
 			if self.icon then
 				x = x + self.h / 2
 			end
 		elseif self.align == "right" then
-			x = self.x + self.w - self.h / 2 - gooi.getFont():getWidth(self.text)
+			x = self.x + self.w - self.h / 2 - gooi.getFont(self):getWidth(self.text)
 		end
 		if self.icon then
 			local xImg = math.floor(self.x + self.h / 2)
